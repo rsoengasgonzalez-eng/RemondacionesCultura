@@ -11,5 +11,5 @@ run_worker_first = ["/api/*"]
 [[d1_databases]]
 binding = "DB"
 database_name = "recomienda-top-db"
-database_id = "REEMPLAZA_CON_TU_DATABASE_ID"
+database_id = "616bcacc-bba4-4d0c-8268-f49dd9e0579e"
 migrations_dir = "migrations"
