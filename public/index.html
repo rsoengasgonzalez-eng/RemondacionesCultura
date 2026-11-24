@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Descubre, vota y recibe recomendaciones de libros, películas y series.">
+  <title>RecomiendaTop — Tu próxima gran historia</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" data-view-link="inicio" aria-label="RecomiendaTop, inicio">
+      <span class="brand-mark">R</span><span>Recomienda<span>Top</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <button class="nav-link active" data-view="inicio">Inicio</button>
+      <button class="nav-link" data-view="catalogo">Explorar</button>
+      <button class="nav-link" data-view="top">Top</button>
+      <button class="nav-link" data-view="para-ti">Para ti</button>
+    </nav>
+    <button class="suggest-button" data-open-suggest><span>＋</span> Recomendar</button>
+  </header>
+
+  <main id="contenido">
+    <section id="view-inicio" class="view active">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">✦ DESCUBRE · VOTA · COMPARTE</span>
+          <h1>Tu próxima gran <em>historia</em> empieza aquí.</h1>
+          <p>Una comunidad para encontrar libros, películas y series que de verdad merecen tu tiempo.</p>
+          <div class="hero-actions">
+            <button class="button primary" data-go="catalogo">Explorar catálogo <span>→</span></button>
+            <button class="button ghost" data-go="para-ti">Recomiéndame algo</button>
+          </div>
+          <div class="hero-stats" id="hero-stats" aria-label="Estadísticas del catálogo">
+            <span><strong>120</strong> libros</span><i></i><span><strong>120</strong> películas</span><i></i><span><strong>120</strong> series</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="poster poster-a"><b>LIBROS</b><span>Historias<br>que dejan<br>huella</span><small>120 títulos</small></div>
+          <div class="poster poster-b"><b>CINE</b><span>El arte de<br>emocionar</span><small>120 títulos</small></div>
+          <div class="poster poster-c"><b>SERIES</b><span>Una más<br>y paro</span><small>120 títulos</small></div>
+        </div>
+      </div>
+      <section class="section-shell home-top">
+        <div class="section-heading"><div><span class="eyebrow">EL PODIO DE LA COMUNIDAD</span><h2>Lo mejor, según vosotros</h2></div><button class="text-button" data-go="top">Ver ranking completo →</button></div>
+        <div id="home-podium" class="podium-grid skeleton-grid" aria-live="polite"></div>
+      </section>
+      <section class="cta-band">
+        <div><span class="eyebrow">NO SABES QUÉ ELEGIR</span><h2>Cuéntanos qué te gusta.<br>Nosotros hacemos el resto.</h2></div>
+        <button class="button light" data-go="para-ti">Crear mi recomendación →</button>
+      </section>
+    </section>
+
+    <section id="view-catalogo" class="view section-shell page-view">
+      <div class="page-heading"><span class="eyebrow">360 HISTORIAS TE ESPERAN</span><h1>Explora el catálogo</h1><p>Busca, filtra, vota y guarda tus favoritas.</p></div>
+      <div class="catalog-toolbar">
+        <label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Buscar por título o género…" autocomplete="off"></label>
+        <div class="segmented" id="type-filter" aria-label="Filtrar por tipo">
+          <button class="active" data-type="">Todo</button><button data-type="book">Libros</button><button data-type="movie">Películas</button><button data-type="series">Series</button>
+        </div>
+        <select id="sort-filter" aria-label="Ordenar resultados"><option value="top">Mejor valorados</option><option value="popular">Más votados</option><option value="title">A–Z</option></select>
+      </div>
+      <div id="genre-filter" class="chip-row" aria-label="Filtrar por género"></div>
+      <div class="results-line"><strong id="results-count">Cargando…</strong><button class="clear-button" id="clear-filters" hidden>Limpiar filtros</button></div>
+      <div id="catalog-grid" class="card-grid skeleton-grid" aria-live="polite"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+
+    <section id="view-top" class="view section-shell page-view">
+      <div class="page-heading centered"><span class="eyebrow">RANKING EN TIEMPO REAL</span><h1>El Top de la comunidad</h1><p>La clasificación cambia con cada voto. Haz que gane tu favorita.</p></div>
+      <div class="segmented centered-tabs" id="top-filter"><button class="active" data-type="">General</button><button data-type="book">Libros</button><button data-type="movie">Películas</button><button data-type="series">Series</button></div>
+      <div id="top-list" class="ranking-list skeleton-list" aria-live="polite"></div>
+    </section>
+
+    <section id="view-para-ti" class="view page-view rec-page">
+      <div class="rec-intro">
+        <span class="eyebrow">TU CURADOR PERSONAL</span><h1>¿Qué te apetece hoy?</h1>
+        <p>Elige formatos y géneros. También usamos tus favoritos para encontrar coincidencias mejores.</p>
+        <div class="preference-block"><h3>1. Elige uno o varios formatos</h3><div class="choice-grid" id="rec-types">
+          <button data-type="book"><span>📚</span><b>Libros</b><small>Para perderse entre páginas</small></button>
+          <button data-type="movie"><span>🎬</span><b>Películas</b><small>Una historia en una sesión</small></button>
+          <button data-type="series"><span>📺</span><b>Series</b><small>Para quedarte unas temporadas</small></button>
+        </div></div>
+        <div class="preference-block"><h3>2. ¿Qué géneros te llaman?</h3><div id="rec-genres" class="chip-row rec-chips"></div></div>
+        <button id="get-recommendations" class="button primary wide">Encontrar mis recomendaciones <span>✦</span></button>
+      </div>
+      <div class="section-shell recommendations-results" id="recommendations-results" hidden>
+        <div class="section-heading"><div><span class="eyebrow">SELECCIÓN PARA TI</span><h2>Creemos que te encantarán</h2></div><span id="rec-basis" class="muted"></span></div>
+        <div id="recommendations-grid" class="card-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="suggest-dialog" class="dialog">
+    <form id="suggest-form" method="dialog">
+      <button class="dialog-close" type="button" data-close-suggest aria-label="Cerrar">×</button>
+      <span class="eyebrow">COMPARTE TU DESCUBRIMIENTO</span><h2>Recomienda un título</h2>
+      <p>¿Falta una historia que merece estar aquí? Cuéntanos cuál.</p>
+      <label>Título<input name="title" required minlength="2" maxlength="160" placeholder="Ej.: El nombre del viento"></label>
+      <label>Tipo<select name="type" required><option value="book">Libro</option><option value="movie">Película</option><option value="series">Serie</option></select></label>
+      <label>¿Por qué lo recomiendas?<textarea name="reason" required minlength="10" maxlength="800" rows="5" placeholder="Lo recomendaría porque…"></textarea></label>
+      <p class="form-status" id="suggest-status" role="status"></p>
+      <button class="button primary wide" type="submit">Enviar recomendación</button>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer><a class="brand" href="#inicio"><span class="brand-mark">R</span><span>Recomienda<span>Top</span></span></a><p>Hecho para descubrir grandes historias.</p><button class="text-button" data-open-suggest>Recomendar un título</button></footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

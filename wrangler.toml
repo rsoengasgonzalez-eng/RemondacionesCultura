@@ -1,0 +1,15 @@
+name = "recomienda-top"
+main = "src/worker.js"
+compatibility_date = "2026-11-24"
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "recomienda-top-db"
+database_id = "REEMPLAZA_CON_TU_DATABASE_ID"
+migrations_dir = "migrations"

@@ -1,0 +1,20 @@
+{
+  "name": "recomienda-top",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Recomendador comunitario de libros, películas y series para Cloudflare Workers + D1.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/validate-catalog.mjs",
+    "dev": "wrangler dev",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "db:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "wrangler deploy",
+    "configure": "node scripts/configure-cloudflare.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  },
+  "engines": { "node": ">=20" }
+}
